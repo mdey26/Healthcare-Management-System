@@ -16,15 +16,6 @@ A full-stack **Django + MongoDB** based healthcare patient management system des
 
 ---
 
-## 🖼️ Screenshots
-
-> Add screenshots here:  
-> - Add Patient Form  
-> - Dashboard with Charts  
-> - Search Patient Page  
-
----
-
 ## ⚙️ Tech Stack
 
 | Layer     | Tech                         |
