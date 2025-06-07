@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patients by Condition</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial; padding: 30px; }
+        .chart-box { width: 60%; margin: auto; }
+    </style>
+</head>
+<body>
+    <h2>Patients by Medical Condition</h2>
+    <div class="chart-box">
+        <canvas id="conditionChart"></canvas>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('conditionChart');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {{ labels|safe }},
+                datasets: [{
+                    label: 'Number of Patients',
+                    data: {{ data|safe }},
+                    backgroundColor: '#4caf50'
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

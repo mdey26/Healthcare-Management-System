@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patient Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        
+        body {
+            font-family: Arial;
+            padding: 20px;
+            background-color: #f0f2f5;
+        }
+        h2 {
+            text-align: center;
+        }
+        .chart-container {
+            width: 60%;
+            margin: auto;
+        }
+        .messages {
+  margin-bottom: 20px;
+}
+
+.alert {
+  background-color: #d4edda;
+  border-left: 6px solid #28a745;
+  padding: 12px;
+  color: #155724;
+  font-weight: bold;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+    </style>
+</head>
+<body>
+    {% if messages %}
+  <div class="messages">
+    {% for message in messages %}
+      <div class="alert">{{ message }}</div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+    <h2>Patient Count by Gender</h2>
+    <div class="chart-container">
+        <canvas id="genderChart" width="400" height="200"></canvas>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('genderChart');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {{ labels|safe }},
+                datasets: [{
+                    label: 'Number of Patients',
+                    data: {{ data|safe }},
+                    backgroundColor: ['#4caf50', '#2196f3', '#f44336']
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

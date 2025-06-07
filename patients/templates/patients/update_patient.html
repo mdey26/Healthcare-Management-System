@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><title>Update Patient</title></head>
+<body>
+    <h2>Update Patient: {{ patient.name }}</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        <label>Name:</label><br>
+        <input name="name" value="{{ patient.name }}"><br>
+
+        <label>Age:</label><br>
+        <input name="age" type="number" value="{{ patient.age }}"><br>
+
+        <label>Gender:</label><br>
+        <input name="gender" value="{{ patient.gender }}"><br>
+
+        <label>Contact Info:</label><br>
+        <input name="contact_info" value="{{ patient.contact_info }}"><br>
+
+        <label>Medical History:</label><br>
+        <textarea name="medical_history">{{ patient.medical_history }}</textarea><br>
+
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>

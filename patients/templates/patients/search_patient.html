@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><title>Search Patient</title></head>
+<body>
+    <h2>Search Patient</h2>
+    <form method="GET">
+        <input type="text" name="query" placeholder="Enter name or ID" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if patients %}
+        <h3>Results:</h3>
+        <ul>
+        {% for patient in patients %}
+            <li>{{ patient.name }} ({{ patient.patient_id }})</li>
+        {% endfor %}
+        </ul>
+    {% elif query %}
+        <p>No matching patients found.</p>
+    {% endif %}
+</body>
+</html>
